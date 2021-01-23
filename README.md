@@ -10,3 +10,5 @@ See KP_summary.pdf for project summary.
 See Poster_HEAD2016.pdf for poster at AAS HEAD meeting.
 
 My duty is mainly reviewing the code and develope a website for this project.
+
+#Notice: Neutral Density files are not uploaded due to file size limitation.
