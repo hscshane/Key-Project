@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <script type="text/javascript">
+    var liu={
+    ajax:function(st)
+        {
+            this.show('load');
+        },
+    show:function(el)
+        {
+            this.getID(el).style.display='';
+        },
+    getID:function(el)
+        {
+            return document.getElementById(el);
+        }
+    }
+    </script>
+    <div align=center>
+        <form action = "/external/" method = "POST" onsubmit="return liu.ajax()"> 
+            {% csrf_token %}
+        <table border=0>
+            <tr><td align=right>
+                <b><label for=id_coords><a href="/swcx/swcx_help.html">Coordinates</a>:</label></b>
+            </td>
+            <td align=left>
+                <input id="id_coords" type="text" name="Coordinates" required><br><br>
+            </td></tr>
+            <tr>
+                <td></td>
+                <td align=left><font size="-1">
+                (<font color=blue>deg,&nbsp;deg</font> or <font color=blue>h&nbsp;m&nbsp;s,&nbsp;deg&nbsp;m&nbsp;s</font>)<br />
+                (e.g., <font color=blue>44.208,&nbsp;19.533</font> or <font color=blue>02&nbsp;56&nbsp;50.0, 19&nbsp;32&nbsp;00 for MBM 12</font>)
+                </font>
+                </td>
+            </tr>
+            <tr>
+                <td align=right><b><label for=id_Ctype><a href="/swcx/swcx_help.html">Input Coordinate System</a>:</label></b></td>
+                <td align=left><select id="id_Ctype" name=Ctype required>
+                <option  selected>  J2000
+                <option > Galactic
+                <option > Ecliptic
+                </select></td>
+            </tr>
+            <tr><td align=right>
+                <b><label for=id_Date><a href="/swcx/swcx_help.html">Date</a>:</label></b>
+            </td>
+            <td align=left>
+                <input id="id_Date" type="text" name="Date" required>
+            </td></tr>
+            <tr>
+                <td></td>
+                <td align=left><font size="-1">
+                    (<font color=blue>mm/dd/yyyy</font> or <font color=blue>mm&nbsp;dd&nbsp;yyyy</font>)
+                </font></td>                
+            </tr>
+            <!--      
+            CSRatio:
+            <input id="id_CSRatio" type="text" name="CSRatio" required><br><br>-->    
+            {{data1}}
+            <br><br>
+            <tr>
+                <tr><td colspan=2 align=center>
+                    <input type="submit" value="Calculate SWCX">&nbsp;&nbsp;&nbsp;&nbsp;<input type=reset value="Reset">
+                </td></tr>
+            </tr>
+        </table>   
+        </form>
+    </div>
+{% endblock %}

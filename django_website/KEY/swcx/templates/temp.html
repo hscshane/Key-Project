@@ -1,0 +1,17 @@
+<form action = "" method = "POST"> 
+    {% csrf_token %}  
+    <label for="coords">Coordinates: </label> 
+    <input id="id_coords" type="text" name="Coordinates">
+    <label for="your_name">Your name: </label> 
+    <input id="id_your_name" type="text" name="your_name"> 
+    <button onclick="location.href='{% url 'script' %}'"> Submit </button>
+    {% if data %}
+        {{ data }}
+    {% endif %}
+</form>
+
+
+<button onclick="location.href='{% url 'script' %}'"> Test Button </button>
+{% if data %}
+{{ data|safe }}
+{% endif %} 
